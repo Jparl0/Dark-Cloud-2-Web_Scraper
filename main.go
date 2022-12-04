@@ -13,7 +13,7 @@ func main() {
 
 	scrapers = append(scrapers, scrape.NewPsnProfileScraper())
 
-	data := new(types.Data)
+	data := new(types.InventData)
 	data.Inventions = make(map[string]types.Invention, 0)
 
 	wg := new(sync.WaitGroup)

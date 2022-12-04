@@ -11,7 +11,7 @@ import (
 )
 
 type Scraper interface {
-	Scrape(data *types.Data) error
+	Scrape(data *types.InventData) error
 }
 
 type BaseScraper struct {
@@ -26,7 +26,7 @@ func NewPsnProfileScraper() *PsnProfileScraper {
 	return &PsnProfileScraper{BaseScraper{Address: "https://psnprofiles.com/guide/3895-dark-cloud-2-ideas-scoops-and-inventions-guide"}}
 }
 
-func (p *PsnProfileScraper) Scrape(data *types.Data) error {
+func (p *PsnProfileScraper) Scrape(data *types.InventData) error {
 	u, err := url.Parse(p.Address)
 	if err != nil {
 		return err
@@ -62,7 +62,7 @@ func (p *PsnProfileScraper) Scrape(data *types.Data) error {
 	return nil
 }
 
-func findInventions(data *types.Data, doc *goquery.Document) {
+func findInventions(data *types.InventData, doc *goquery.Document) {
 	doc.Find("#3-inventions").
 		Find(".section-original").
 		Find("table").Find("tr").Each(func(i int, selection *goquery.Selection) {
@@ -81,6 +81,27 @@ func findInventions(data *types.Data, doc *goquery.Document) {
 			case 4:
 				invention.Description = text
 				data.Inventions[invention.Invention] = invention
+			default:
+			}
+		})
+	})
+}
+
+func findIdeas(data *types.IdeaData, doc *goquery.Document) {
+	doc.Find("#1-ideas").
+		Find(".section-original").
+		Find("table").Find("tr").Each(func(i int, selection *goquery.Selection) {
+		idea := types.Idea{}
+		selection.Find("td").Each(func(i int, selection *goquery.Selection) {
+			text := strings.TrimSpace(selection.Text())
+			switch i {
+			case 0:
+				idea.Idea = text
+			case 1:
+				idea.Location = text
+			case 2:
+				idea.IdeaDescript = text
+				data.Ideas[idea.Idea] = idea
 			default:
 			}
 		})
