@@ -13,6 +13,7 @@ code {
 }
 
 header {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   padding: 50px;
   text-align: center;
 }
@@ -24,4 +25,14 @@ header {
   padding: 75px;
   box-shadow:  0 30px 100px 0 gray;
   margin: 100px;
+}
+
+#title {
+  font-size: xxx-large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#header-description {
+  
+  font-size: larger;
 }
