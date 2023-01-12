@@ -29,20 +29,20 @@ function HomePage() {
         <section id='main-section'>
 
             {/* Ideas */}
-                {/* <div>
+                <div>
                     <h2 className='title'>Ideas Section</h2>
                     <div>
                         
                     </div>
-                </div> */}
+                </div>
 
             {/* Scoops */}
-                {/* <div>
+                <div>
                     <h2 className='title'>Scoops Section</h2>
                     <div>
                         
                     </div>
-                </div> */}
+                </div>
 
             {/* Inventions */}
                 <div>
