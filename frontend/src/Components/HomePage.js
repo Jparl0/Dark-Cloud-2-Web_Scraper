@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Inventions from './Inventions';
 
 function HomePage() {
 
@@ -49,10 +50,19 @@ function HomePage() {
                     <h2 className='title'>Inventions Section</h2>
                     <p> Use the search bar below to find the requirements for any Invention*</p>
                     <div id='main-invent-container'>
+                        {/* form to search inventions by name */}
                         <form>
                             <label>Name:</label>
                             <input type='text' id='invent-name-search' onChange={handleInventVal}></input>
                         </form>
+                        {/* form to search inventions by idea name */}
+                        <form>
+                            <label>Idea name:</label>
+                            <input type='text' id='idea-name-search'></input>
+                        </form>
+                    </div>
+                    <div>
+                        <Inventions />
                     </div>
                 </div>
         </section>
