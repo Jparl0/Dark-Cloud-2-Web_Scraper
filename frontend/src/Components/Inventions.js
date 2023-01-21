@@ -1,15 +1,53 @@
-import React from 'react'
+import * as React from 'react';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Card from 'react-bootstrap/Card';
 
 function Inventions() {
   return (
-    <div className='invents-inner-container'>
-        <h4>Invent Name</h4>
-        <ul>
-            <li>idea 1</li>
-            <li>idea 2</li>
-            <li>idea 3</li>
-        </ul>
-    </div>
+      <CardGroup>
+        <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Idea1</Card.Title>
+              <Card.Text>
+                This is a wider card with supporting text below as a natural lead-in
+                to additional content. This card has even longer content than the
+                first to show that equal height action.
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Idea2</Card.Title>
+              <Card.Text>
+                This is a wider card with supporting text below as a natural lead-in
+                to additional content. This card has even longer content than the
+                first to show that equal height action.
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>idea 3</Card.Title>
+              <Card.Text>
+                This is a wider card with supporting text below as a natural lead-in
+                to additional content. This card has even longer content than the
+                first to show that equal height action.
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </Card.Footer>
+          </Card>
+      </CardGroup>
   )
 }
 

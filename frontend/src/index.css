@@ -33,10 +33,14 @@ header {
 }
 
 #header-description {
-  
   font-size: larger;
 }
 
 .title {
   font-size: x-large;
+}
+
+.card-group {
+  
+  display: flex;
 }
