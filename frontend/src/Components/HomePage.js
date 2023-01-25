@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Inventions from './Inventions';
 
-function HomePage() {
+function HomePage({inventionsFetched, setInventionsFetched}) {
 
     const [ searchInventValue, setSearchInventValue] = useState("");
 
@@ -9,6 +9,13 @@ function HomePage() {
         setSearchInventValue(e.target.value)
     }
     // console.log(searchInventValue)
+    useEffect(() => {
+        fetch("/getInventions")
+        .then(r => r.json())
+        .then(inventionsData => {
+            setInventionsFetched(inventionsData)
+        }
+    )})
 
   return (
     <div>
