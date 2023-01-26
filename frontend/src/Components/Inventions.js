@@ -8,31 +8,31 @@ function Inventions({mappedInventionProp}) {
       <div class="card">
         <img src="..." class="card-img-top" alt="..."/>
         <div class="card-body">
-          <h5 class="card-title">{mappedInventionProp.title}</h5>
-          <p class="card-descript"> content is a little bit longer.</p>
+          <h5 class="card-title">Card title 1</h5>
+          <p class="card-descript"> descript 1</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">footer 1</small>
         </div>
       </div>
       <div class="card">
         <img src="..." class="card-img-top" alt="..."/>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-descript">This card has supporting text below as a natural lead-in to additional content.</p>
+          <h5 class="card-title">Card title 2</h5>
+          <p class="card-descript">descript 2</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">footer 2</small>
         </div>
       </div>
       <div class="card">
         <img src="..." class="card-img-top" alt="..."/>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-descript">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <h5 class="card-title">Card title 3</h5>
+          <p class="card-descript">descript 3</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">footer 3</small>
         </div>
       </div>
     </div>
