@@ -66,6 +66,11 @@ function HomePage({inventionsFetched, setInventionsFetched}) {
             </div>
 
             <div id='inventions-container'>
+            {
+                (inventionsData.filter(filteredInventions => filteredInventions.name === searchInventValue.name)).map((mappedInvention) => {
+                    return (<Inventions key={mappedInvention.id} mappedInvention={mappedInvention} inventionsFetched={inventionsFetched}/>)
+                })
+            }
                 <Inventions inventionsFetched={inventionsFetched}/>
             </div>
 
