@@ -19,6 +19,8 @@ invents_table = invents_sect2.find_next('table')
 
 content = invents_sect.find_all('tr')
 
+
+
 print(content)
 # print(soup.prettify())
 
