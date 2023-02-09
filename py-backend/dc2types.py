@@ -21,4 +21,3 @@ class Idea:
     def __str__(self):
         return f"{self.name}{self.location}{self.ideaDescript}"
 
-invent1 = Invention("")
