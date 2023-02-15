@@ -6,9 +6,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function HomePage({inventionsFetched, setInventionsFetched}) {
 
     const [ searchInventValue, setSearchInventValue] = useState("");
+    const [ searchIdeaValue, setSearchIdeaValue] = useState("");
+
 
     function handleInventVal(e) {
         setSearchInventValue(e.target.value)
+    }
+
+    function handleIdeaVal(e) {
+        setSearchIdeaValue(e.target.value)
     }
     // console.log(searchInventValue)
     useEffect(() => {
@@ -16,7 +22,7 @@ function HomePage({inventionsFetched, setInventionsFetched}) {
         .then(r => r.json())
         .then(inventionsData => {
             console.log(inventionsData)
-            //setInventionsFetched(inventionsData)
+            setInventionsFetched(inventionsData)
         }
     )}, [])
 
@@ -52,13 +58,13 @@ function HomePage({inventionsFetched, setInventionsFetched}) {
                         {/* form to search inventions by name */}
                         <div class="mb-3">
                             <label for="invent-name-search" class="form-label">Name:</label>
-                            <input type="email" class="form-control" id="invent-name-search" aria-describedby="emailHelp"/>
+                            <input onChange={handleInventVal} type="email" class="form-control" id="invent-name-search" aria-describedby="emailHelp"/>
                         </div>
 
                         {/* form to search inventions by idea name */}
                         <div class="mb-3">
                             <label for="idea-name-search" class="form-label">Idea Name:</label>
-                            <input type="password" class="form-control" id="idea-name-search"/>
+                            <input onChange={handleIdeaVal} type="password" class="form-control" id="idea-name-search"/>
                             <div id="form-help" class="form-text">The data will automatically render below.</div>
                         </div>
                     </form>
@@ -67,11 +73,10 @@ function HomePage({inventionsFetched, setInventionsFetched}) {
 
             <div id='inventions-container'>
             {
-                (inventionsData.filter(filteredInventions => filteredInventions.name === searchInventValue.name)).map((mappedInvention) => {
-                    return (<Inventions key={mappedInvention.id} mappedInvention={mappedInvention} inventionsFetched={inventionsFetched}/>)
+                (inventionsFetched.filter(filteredInventions => filteredInventions.name === (searchInventValue || searchIdeaValue))).map((mappedInvention) => {
+                    return (<Inventions key={mappedInvention.id} mappedInvention={mappedInvention} />)
                 })
             }
-                <Inventions inventionsFetched={inventionsFetched}/>
             </div>
 
         </section>
