@@ -47,6 +47,7 @@ function HomePage({inventionsFetched, setInventionsFetched}) {
             {/* Ideas */}
 
             {/* Scoops */}
+            
 
             {/* Inventions */}
             <div>
