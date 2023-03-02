@@ -1,9 +1,13 @@
 import os
 import psycopg2
+from flask import jsonify
+import json
+from routes import get_invent
 
 from flask import Flask, render_template
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 
 def get_db_connection():
     conn = psycopg2.connect(host="localhost",
@@ -12,15 +16,11 @@ def get_db_connection():
                             password=os.environ['DB_PASSWORD'])
     return conn
 
-@app.route('/')
-
-def index():
-    conn = get_db_connection
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM inventions;')
-    invents = cur.fetchall()
-    cur.close()
-    conn.close()
-    return render_template('index.js', invents=invents)
+@app.route('/inventions', methods=['GET'])
+def get_inventions():
+    response = jsonify(get_invent())
+    return response
 
 
+if __name__ == '__main__':
+    app.run(host=os.getenv("app_host"), port="5000")
