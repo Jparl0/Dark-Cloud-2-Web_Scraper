@@ -2,9 +2,11 @@ import flask
 import json
 from flask import jsonify
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 app.config["DEBUG"] = True
+app.json.compact = False
 
+migrate = Migrate(app, db)
 
 @app.route('/inventions', methods=['GET'])
 def get_data():

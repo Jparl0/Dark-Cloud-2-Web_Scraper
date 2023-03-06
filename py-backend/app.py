@@ -8,6 +8,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+app.json.compact = False
 
 def get_db_connection():
     conn = psycopg2.connect(host="localhost",
@@ -16,11 +17,16 @@ def get_db_connection():
                             password=os.environ['DB_PASSWORD'])
     return conn
 
+@app.route('/')
+def index():
+    return "Index for Invention/Item/Ideas API for Dark Cloud 2"
+
 @app.route('/inventions', methods=['GET'])
 def get_inventions():
     response = jsonify(get_invent())
     return response
 
 
+
 if __name__ == '__main__':
-    app.run(host=os.getenv("app_host"), port="5000")
+    app.run(host=os.getenv("app_host"), port="5005")
