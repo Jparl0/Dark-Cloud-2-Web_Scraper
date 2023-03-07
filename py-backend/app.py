@@ -26,7 +26,5 @@ def get_inventions():
     response = jsonify(get_invent())
     return response
 
-
-
 if __name__ == '__main__':
     app.run(host=os.getenv("app_host"), port="5005")

@@ -1,6 +1,6 @@
 import os
 import psycopg2
-from scrape import inventionMapper
+from scrape import table_mapper, invents_body
 
 conn = psycopg2.connect( 
         host="localhost",
@@ -22,20 +22,21 @@ mycursor.execute('CREATE TABLE inventions (id serial PRIMARY KEY,'
                                  'date_added date DEFAULT CURRENT_TIMESTAMP);'
                                  )
 
-def seedScrapedInventData(scrapedInventions):
-        for mappedInvent in scrapedInventions:
+# used to seed invention data into the PostgreSQL server
+def seed_scraped_invents(scraped_inventions):
+        for mapped_invent in scraped_inventions:
                 mycursor.execute('INSERT INTO inventions (name, idea1, idea2, idea3, descript)'
                                 'VALUES (%s, %s, %s, %s, %s)',
-                                (mappedInvent[0],
-                                mappedInvent[1],
-                                mappedInvent[2],
-                                mappedInvent[3],
-                                mappedInvent[4])
+                                (mapped_invent[0],
+                                mapped_invent[1],
+                                mapped_invent[2],
+                                mapped_invent[3],
+                                mapped_invent[4])
                                 )
 
 
 # print(inventionMapper())
-seedScrapedInventData(inventionMapper())
+seed_scraped_invents(table_mapper(invents_body))
 conn.commit()
 
 mycursor.close()
