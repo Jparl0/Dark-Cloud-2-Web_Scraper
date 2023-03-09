@@ -8,11 +8,6 @@ app.json.compact = False
 
 migrate = Migrate(app, db)
 
-@app.route('/inventions', methods=['GET'])
-def get_data():
-    response = jsonify(get_invent())
-    return response
-
 
 def get_invent():
     sql = """select * from inventions where exist=1 ORDER

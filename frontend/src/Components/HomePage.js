@@ -18,11 +18,11 @@ function HomePage({inventionsFetched, setInventionsFetched}) {
     }
     // console.log(searchInventValue)
     useEffect(() => {
-        fetch("/getInventions")
+        fetch("/inventions")
         .then(r => r.json())
         .then(inventionsData => {
             console.log(inventionsData)
-            setInventionsFetched(inventionsData)
+            // setInventionsFetched(inventionsData)
         }
     )}, [])
 

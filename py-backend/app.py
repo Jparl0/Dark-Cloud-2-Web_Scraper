@@ -4,7 +4,7 @@ from flask import jsonify
 import json
 from routes import get_invent
 
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -19,7 +19,7 @@ def get_db_connection():
 
 @app.route('/')
 def index():
-    return "Index for Invention/Item/Ideas API for Dark Cloud 2"
+    return "An index for Inventions/Scoops/Ideas API for Dark Cloud 2"
 
 @app.route('/inventions', methods=['GET'])
 def get_inventions():
