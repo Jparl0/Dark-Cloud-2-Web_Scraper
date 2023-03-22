@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-export const FetchInventions = (props) => {
+export const FetchInventions = () => {
 
     function getInventions() {
         fetch(`/inventions`)
@@ -13,11 +13,11 @@ export const FetchInventions = (props) => {
 
 
   return (
-    <div></div>
+    <></>
   )
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = () => ({})
 
 const mapDispatchToProps = {}
 
