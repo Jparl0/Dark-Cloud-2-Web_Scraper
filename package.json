@@ -2,12 +2,12 @@
     "name": "DC2-data-search",
     "description": "Single page web app for querying for specific data utilizing Python3, React.js and BootStrap",
     "engines": {
-      "node": "16.x"
+        "node": "16.x"
     },
     "scripts": {
-      "build": "npm install --prefix client && npm run build --prefix client",
-      "clean": "rm -rf public",
-      "deploy": "cp -a client/build/. public/",
-      "py-fstart": "source bin/activate"
+        "build": "npm install --prefix client && npm run build --prefix client",
+        "clean": "rm -rf public",
+        "deploy": "cp -a client/build/. public/",
+        "py-fstart": "source bin/activate"
     }
-  }
+}

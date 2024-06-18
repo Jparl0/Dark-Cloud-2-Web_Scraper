@@ -41,6 +41,6 @@ header {
 }
 
 .card-group {
-  
+  color: red;
   display: flex;
 }

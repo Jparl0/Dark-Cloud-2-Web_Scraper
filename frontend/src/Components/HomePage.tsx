@@ -1,24 +1,37 @@
-import React, {useState, useEffect, ReactEventHandler} from 'react'
+import React, { useEffect } from 'react'
 import Inventions from './Inventions';
+import Header from './Header';
+
+
+type Invention = Array<object>
+
+interface HomePageProps {
+    inventionsFetched: Invention;
+};
+//     setInventionsFetched: React.Dispatch<React.SetStateAction<Array<object>>>;
+
+interface InventionsFetched {
+    name: string;
+    idea1: string;
+    idea2: string;
+    idea3: string;
+    description: string;
+}
 
 interface ChangeValues {
     inventChangeVal: string;
     ideaChangeVal: string;
 };
-
-type Invention = object
-
-interface HomePageProps {
-    inventionsFetched: Invention;
-    setInventionsFetched: React.Dispatch<React.SetStateAction<object>>;
-  };
-
-function HomePage({inventionsFetched, setInventionsFetched}: HomePageProps) {
+function HomePage() {
 
     // creating state to search by invention and idea name
     const [ searchValue, setSearchValue] = React.useState<ChangeValues>({
         inventChangeVal: "",
         ideaChangeVal: ""
+    });
+
+    const [inventionsStateVal, setInventionsStateVal] = React.useState<HomePageProps>({
+        inventionsFetched: [{}]
     });
     
     const handleChange = (fieldName: keyof ChangeValues) => (
@@ -28,32 +41,28 @@ function HomePage({inventionsFetched, setInventionsFetched}: HomePageProps) {
     ) => {
         setSearchValue({...searchValue, [fieldName]: e.currentTarget.value });
     }
+    
+    useEffect(() => {
+        async function () {
+    
 
-    // useEffect(() => {
-    //     fetch("/inventions")
-    //     .then(r => r.json())
-    //     .then(inventionsData => {
-    //         console.log(inventionsData)
-    //         // setInventionsFetched(inventionsData)
-    //     }
-    // )}, [])
+
+        }
+        fetch("/inventions")
+        .then(r => r.json())
+        .then(inventionsData => {
+            console.log(inventionsData)
+            // setInventionsStateVal(inventionsData)
+        }
+    )}, [])
 
   return (
     <div>
         <header>
-            <div className="jumbotron">
-                <h1 id='title' className="display-4">Dark Cloud 2 Crafting Data</h1>
-                <p className="lead">
-                    This web application utilizes React.js & Go to query over large bodies of text to extract key information. This will allow users to better conceptualize the data needed for specific classes
-                </p>
-                <hr className="my-4"/>
-                <p>
-                    Below are multiple classes of items in the game that required multiple complimentary components in the game. Use Each search box below to find any specific item. 
-                </p>
-            </div>
+            <Header />
         </header>
         {/* Main Section Box */}
-        <section id='main-section'>
+        <body id='main-section'>
             {/* Ideas */}
             {/* Scoops */}
             {/* Inventions */}
@@ -75,15 +84,16 @@ function HomePage({inventionsFetched, setInventionsFetched}: HomePageProps) {
                         </div>
                     </form>
                 </div>
+                <div id='inventions-container'>
+                    <Inventions />
+                {
+                    // (inventionsStateVal.filter(filteredInventions => filteredInventions.name === (inventChangeVal || ideaChangeVal))).map((mappedInvention) => {
+                    //     return (<Inventions mappedInventionProp={mappedInvention} />)
+                    // })
+                }
+                </div>
             </div>
-            <div id='inventions-container'>
-            {
-                // (inventionsFetched.filter(filteredInventions => filteredInventions.name === (searchInventValue || searchIdeaValue))).map((mappedInvention) => {
-                //     return (<Inventions key={mappedInvention.id} mappedInventionProp={mappedInvention} />)
-                // })
-            }
-            </div>
-        </section>
+        </body>
         {/* <footer>
         </footer> */}
     </div>
