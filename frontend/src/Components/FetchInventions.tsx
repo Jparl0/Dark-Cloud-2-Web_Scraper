@@ -11,7 +11,6 @@ export const FetchInventions = () => {
         })
     }
 
-
   return (
     <></>
   )
