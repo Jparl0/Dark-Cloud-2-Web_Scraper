@@ -1,21 +1,30 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux'
 
 export function FetchInventions<TData, TParams extends object = object>(
   endpoint: string,
   params?: TParams
 ): Promise<TData> {
-  return new Promise (() => {
-
+  return new Promise ((resolve, reject) => {
+    
     const [intentionData, setInventionData] = useState([])
-
-    useEffect(() => {
-      fetch(`/inventions`)
-      .then(r => r.json())
-      .then(inventionsObject => {
-        setInventionData(inventionsObject)
-      })
-    }, [])
+    
+    inventionLog({
+      message: "Loading",
+      data: {endpoint, params},
+      type: "inventions",
+    })
+    try{
+        
+    } catch(error) {
+      if (error instanceof Error) {
+        inventionLog({
+          message: error.message,
+          data: {endpoint, params},
+          type: "error",
+        })
+        reject(error.message)
+      }}    
  })
 }
 
