@@ -12,10 +12,12 @@ export function FetchInventions<TData, TParams extends object = object>(
     inventionLog({
       message: "Loading",
       data: {endpoint, params},
-      type: "inventions",
+      type: "info",
     })
     try{
-        
+        fetch(endpoint)
+        .then(r => resolve(r.json<TData>()))
+        .then(inventionObject => setInventionData(inventionObject))
     } catch(error) {
       if (error instanceof Error) {
         inventionLog({
@@ -26,6 +28,18 @@ export function FetchInventions<TData, TParams extends object = object>(
         reject(error.message)
       }}    
  })
+}
+
+function inventionLog({
+  data,
+  message,
+  type
+}: {
+  message?: string
+  data: object
+  type?: "success" | "error" | "info"
+}) {
+
 }
 
 const mapStateToProps = () => ({})
