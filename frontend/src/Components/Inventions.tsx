@@ -1,6 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+export interface invention {
+  inventName: string
+  idea1: string
+  idea2: string
+  idea3: string
+  descript: string
+}
+
 function Inventions() {
   return (
     <div className="card-group">
