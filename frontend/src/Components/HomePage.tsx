@@ -10,14 +10,6 @@ interface HomePageProps {
 };
 //     setInventionsFetched: React.Dispatch<React.SetStateAction<Array<object>>>;
 
-interface InventionsFetched {
-    name: string;
-    idea1: string;
-    idea2: string;
-    idea3: string;
-    description: string;
-}
-
 interface ChangeValues {
     inventChangeVal: string;
     ideaChangeVal: string;
@@ -45,8 +37,6 @@ function HomePage() {
     useEffect(() => {
         async function () {
     
-
-
         }
         fetch("/inventions")
         .then(r => r.json())
